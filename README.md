@@ -1,5 +1,7 @@
 # Xtext Tools
 
+Feel free to add issues in order to improve the tool.
+
 ## Node Model Outline
 
 The node model outline provides a view to investigate the node model of your Xtext based model file.
@@ -42,6 +44,3 @@ As the grammar is an Xtext language itself it is represented as an EMF model, to
 Xtext Tools tries to stop exploring your models by using the debugger. It provides different views in order to visualize the different underlying models.
 
 These views aim at language designer and are usually useless for the language's end users.
-
-Feel free to add issues in order to improve the tool.
-
