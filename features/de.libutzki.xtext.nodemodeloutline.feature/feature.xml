@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="de.libutzki.xtext.nodemodeloutline.feature"
+      label="Xtext Node Model Outline"
+      version="0.0.1.qualifier">
+
+   <description url="http://www.example.com/description">
+      Xtext Node Model Outline
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+   </copyright>
+
+   <license url="http://www.example.com/license">
+   </license>
+
+   <plugin
+         id="de.libutzki.xtext.nodemodeloutline.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
