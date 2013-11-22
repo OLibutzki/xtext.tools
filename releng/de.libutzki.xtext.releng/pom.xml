@@ -11,7 +11,17 @@
 		<xtend-version>2.4.3</xtend-version>
 	</properties>
 
+
 	<build>
+		<extensions>
+			<!-- Extension required to deploy a snapshot or a release to the CloudBees 
+				remote maven repository using Webdav -->
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav</artifactId>
+				<version>1.0-beta-2</version>
+			</extension>
+		</extensions>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
@@ -49,8 +59,22 @@
 					</execution>
 				</executions>
 			</plugin>
+
 		</plugins>
 	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>olibutzki-release</id>
+			<name>olibutzki-release</name>
+			<url>dav:https://repository-olibutzki.forge.cloudbees.com/release/</url>
+		</repository>
+		<snapshotRepository>
+			<id>olibutzki-snapshot</id>
+			<name>olibutzki-snapshot</name>
+			<url>dav:https://repository-olibutzki.forge.cloudbees.com/snapshot/</url>
+		</snapshotRepository>
+	</distributionManagement>
 	<modules>
 		<module>../de.libutzki.xtext.nodemodeloutline.releng</module>
 		<module>../de.libutzki.xtext.distribution.releng</module>
