@@ -19,6 +19,7 @@ Xtext Tools tries to stop exploring your models by using the debugger. It provid
 
 These views aim at language designer and are usually useless for the language's end users.
 
+Feel free to add issues in order to improve the tool.
 
 ## Node Model Outline
 
