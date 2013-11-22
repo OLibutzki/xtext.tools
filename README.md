@@ -13,14 +13,14 @@ If you have an Eclipse running :
 
 1. Choose **Help -> Install New Software...** from the menu bar and click **Add...** 
 2. Insert this url: **http://xtexttools.olibutzki.cloudbees.net/**
-3. Select the *Xtext Node Model Outline* from the category *Xtext tools* and complete the wizard by clicking the **Next** button until you can click **Finish**.
+3. Select the *Xtext Node Model Outline* from the category *Xtext Node Model Outline* and complete the wizard by clicking the **Next** button until you can click **Finish**.
 4. After a quick download and a restart of Eclipse, the node model outline is ready to use.   
 
 ### Integrating the node model outline
 If you have an Eclipse running : 
 
 1. Choose **Window -> Show View -> Other...** from the menu bar
-2. Select *Xtext Tools* -> *Node Model Outline*
+2. Select *Other* -> *Node Model Outline*
 3. The outline is added to your workbench
 4. If you open an Xtext based file, the Node Model Outline displays the underlying Node Model
 
