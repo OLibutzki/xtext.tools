@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?compositeMetadataRepository version='1.0.0'?>
+<repository name="Xtext Tools"
+	type='org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository'
+	version='1.0.0'>
+	<children size='1'>
+		<child location='nodemodeloutline' />
+	</children>
+</repository>

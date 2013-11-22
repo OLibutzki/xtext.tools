@@ -3,16 +3,24 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>de.libutzki.xtext.distribution.webapp</artifactId>
 	<packaging>war</packaging>
-	<dependencies>
-		<dependency>
-			<groupId>de.libutzki.xtext.nodemodeloutline</groupId>
-			<artifactId>de.libutzki.xtext.nodemodeloutline.distribution</artifactId>
-			<version>${project.version}</version>
-			<type>eclipse-repository</type>
-			<scope>provided</scope>
-		</dependency>
-	</dependencies>
+	<!-- <dependencies> <dependency> <groupId>de.libutzki.xtext.nodemodeloutline</groupId> 
+		<artifactId>de.libutzki.xtext.nodemodeloutline.repo</artifactId> <type>eclipse-repository</type> 
+		<version>[0.0.1,)</version> <scope>provided</scope> </dependency> </dependencies> -->
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>de.libutzki.xtext.nodemodeloutline</groupId>
+				<artifactId>de.libutzki.xtext.nodemodeloutline.repo</artifactId>
+				<type>eclipse-repository</type>
+				<version>0.0.1-SNAPSHOT</version>
+				<scope>provided</scope>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
 	<build>
+
 		<finalName>de.libutzki.xtext.nodemodeloutline.distribution.webapp</finalName>
 		<plugins>
 			<plugin>
@@ -30,17 +38,18 @@
 							<artifactItems>
 								<artifactItem>
 									<groupId>de.libutzki.xtext.nodemodeloutline</groupId>
-									<artifactId>de.libutzki.xtext.nodemodeloutline.distribution</artifactId>
-									<version>${project.version}</version>
+									<artifactId>de.libutzki.xtext.nodemodeloutline.repo</artifactId>
 									<type>eclipse-repository</type>
+
 									<overWrite>true</overWrite>
-									<outputDirectory>${project.build.directory}/de.libutzki.xtext.nodemodeloutline.distribution</outputDirectory>
+									<outputDirectory>${project.build.directory}/repos/nodemodeloutline</outputDirectory>
 								</artifactItem>
 							</artifactItems>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
@@ -48,7 +57,10 @@
 				<configuration>
 					<webResources>
 						<resource>
-							<directory>${project.build.directory}/de.libutzki.xtext.nodemodeloutline.distribution</directory>
+							<directory>${project.build.directory}/repos</directory>
+						</resource>
+						<resource>
+							<directory>composites</directory>
 						</resource>
 					</webResources>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
