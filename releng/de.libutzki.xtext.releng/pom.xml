@@ -11,14 +11,6 @@
 		<xtend-version>2.4.3</xtend-version>
 	</properties>
 
-	<repositories>
-     <repository>
-         <id>olibutzki-snapshot</id>
-         <name>olibutzki Release Repository</name>
-         <url>https://repository-olibutzki.forge.cloudbees.com/snapshot/</url>
-       </repository>
-	</repositories>
-
 	<build>
 		<extensions>
 			<!-- Extension required to deploy a snapshot or a release to the CloudBees 

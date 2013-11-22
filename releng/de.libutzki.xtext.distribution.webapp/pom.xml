@@ -1,18 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.libutzki.xtext.distribution</groupId>
 	<artifactId>de.libutzki.xtext.distribution.webapp</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>de.libutzki.xtext.nodemodeloutline</groupId>
 				<artifactId>de.libutzki.xtext.nodemodeloutline.repo</artifactId>
-				<type>eclipse-repository</type>
+				<type>zip</type>
 				<version>0.0.1-SNAPSHOT</version>
-				<scope>provided</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -36,7 +34,7 @@
 								<artifactItem>
 									<groupId>de.libutzki.xtext.nodemodeloutline</groupId>
 									<artifactId>de.libutzki.xtext.nodemodeloutline.repo</artifactId>
-									<type>eclipse-repository</type>
+									<type>zip</type>
 
 									<overWrite>true</overWrite>
 									<outputDirectory>${project.build.directory}/repos/nodemodeloutline</outputDirectory>
@@ -66,4 +64,11 @@
 		</plugins>
 	</build>
 
+
+	<parent>
+		<groupId>de.libutzki.xtext.distribution</groupId>
+		<artifactId>de.libutzki.xtext.distribution.releng</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../de.libutzki.xtext.distribution.releng</relativePath>
+	</parent>
 </project>
