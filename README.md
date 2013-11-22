@@ -3,7 +3,7 @@
 As I work as an Xtext consultant there are a lot of situations I am confronted with again and again.
 The first one I would like to look into is "how does the underlying model look like?"
 
-Text files parsed by Xtext are represented as object graphs in memory. We call these object graphs Abstract Syntax Tree (AST), semantic model or simply model interchangeably. In Xtext models are implemented using the Eclipse Modeling Framework (EMF).
+Text files parsed by Xtext are represented as object graphs in memory. These object graphs are called Abstract Syntax Tree (AST), semantic model or simply model interchangeably. Xtext models are implemented using the Eclipse Modeling Framework (EMF).
 
 As it's an EMF (Ecore) model you can investigate your model just by using any Ecore editor/viewer. Especially for languages which provide nested expressions it helps you to double-check, if the semantic model is built the way you want it to be.
 
