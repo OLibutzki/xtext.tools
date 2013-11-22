@@ -1,5 +1,29 @@
 # Xtext Tools
 
+## Node Model Outline
+
+The node model outline provides a view to investigate the node model of your Xtext based model file.
+It's possible to link the outline with the editor bidirectionally.
+
+
+### Install Xtext Tools from Update Site 
+If you have an Eclipse running : 
+
+1. Choose **Help -> Install New Software...** from the menu bar and click **Add...** 
+2. Insert this url: **http://xtexttools.olibutzki.cloudbees.net/**
+3. Select the *Xtext Node Model Outline* from the category *Xtext tools* and complete the wizard by clicking the **Next** button until you can click **Finish**.
+4. After a quick download and a restart of Eclipse, the node model outline is ready to use.   
+
+### Integrating the node model outline
+If you have an Eclipse running : 
+
+1. Choose **Window -> Show View -> Other...** from the menu bar
+2. Select *Xtext Tools* -> *Node Model Outline*
+3. The outline is added to your workbench
+4. If you open an Xtext based file, the Node Model Outline displays the underlying Node Model
+
+## Motivation
+
 As I work as an Xtext consultant there are a lot of situations I am confronted with again and again.
 The first one I would like to look into is "how does the underlying model look like?"
 
@@ -21,20 +45,3 @@ These views aim at language designer and are usually useless for the language's 
 
 Feel free to add issues in order to improve the tool.
 
-## Node Model Outline
-
-### Install Xtext Tools from Update Site 
-If you have an Eclipse running : 
-
-1. Choose **Help -> Install New Software...** from the menu bar and click **Add...** 
-2. Insert this url: **http://xtexttools.olibutzki.cloudbees.net/**
-3. Select the *Xtext Node Model Outline* from the category *Xtext tools* and complete the wizard by clicking the **Next** button until you can click **Finish**.
-4. After a quick download and a restart of Eclipse, the node model outline is ready to use.   
-
-### Integrating the node model outline
-If you have an Eclipse running : 
-
-1. Choose **Window -> Show View -> Other...** from the menu bar
-2. Select *Xtext Tools* -> *Node Model Outline*
-3. The outline is added to your workbench
-4. If you open an Xtext based file, the Node Model Outline displays the underlying Node Model
