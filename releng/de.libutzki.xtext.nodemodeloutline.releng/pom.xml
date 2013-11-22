@@ -66,5 +66,7 @@
 		<module>
 			../../plugins/de.libutzki.xtext.nodemodeloutline.ui
 		</module>
+		
+		<module>../de.libutzki.xtext.nodemodeloutline.repo</module>
 	</modules>
 </project>

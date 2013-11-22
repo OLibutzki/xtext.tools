@@ -58,7 +58,7 @@
 		<relativePath>../de.libutzki.xtext.releng</relativePath>
 	</parent>
 	<modules>
-		<module>../de.libutzki.xtext.distribution.repo</module>
+		
 		<module>../de.libutzki.xtext.distribution.webapp</module>
 	</modules>
 </project>
