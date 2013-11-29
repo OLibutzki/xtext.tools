@@ -2,6 +2,7 @@ package de.libutzki.xtext.semanticmodeloutline.ui;
 
 import org.apache.log4j.Logger;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.ui.shared.SharedStateModule;
 import org.osgi.framework.BundleContext;
 
 import com.google.inject.Guice;
@@ -47,7 +48,7 @@ public class SemanticModelOutlineActivator extends AbstractUIPlugin {
 	
 	protected Injector createInjector() {
 		try {
-			return Guice.createInjector(new SemanticModelOutlineUiModule());
+			return Guice.createInjector(new SharedStateModule(), new SemanticModelOutlineUiModule());
 		} catch (Exception e) {
 			logger.error("Failed to create injector");
 			logger.error(e.getMessage(), e);

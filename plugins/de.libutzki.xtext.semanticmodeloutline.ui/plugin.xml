@@ -8,10 +8,10 @@
 		   name="%Views.category.XtextTools">
 		</category>
       <view
-            class="de.libutzki.xtext.nodemodeloutline.ui.NodeModelOutlineExecutableExtensionFactory:de.libutzki.xtext.nodemodeloutline.ui.view.NodeModelOutline"
-            icon="icons/nodemodeloutline.png"
-            id="de.libutzki.xtext.nodemodelview.ui.view.nodemodeloutline"
-            name="%Views.NodeModelView"
+            class="de.libutzki.xtext.semanticmodeloutline.ui.SemanticModelOutlineExecutableExtensionFactory:de.libutzki.xtext.semanticmodeloutline.ui.view.SemanticModelOutline"
+            
+            id="de.libutzki.xtext.semanticview.ui.view.semanticmodeloutline"
+            name="%Views.SemanticModelView" 
             category="de.libutzki.xtext.tools"
             restorable="true">
       </view>

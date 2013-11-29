@@ -8,6 +8,8 @@ import org.eclipse.xtext.ui.IImageHelper;
 import org.eclipse.xtext.ui.IImageHelper.IImageDescriptorHelper;
 import org.eclipse.xtext.ui.PluginImageHelper;
 import org.eclipse.xtext.ui.editor.outline.IOutlineTreeProvider;
+import org.eclipse.xtext.ui.editor.outline.actions.IOutlineContribution;
+import org.eclipse.xtext.ui.editor.outline.actions.LinkWithEditorOutlineContribution;
 import org.eclipse.xtext.ui.editor.outline.impl.OutlinePage;
 import org.eclipse.xtext.ui.editor.preferences.IPreferenceStoreAccess;
 
@@ -50,10 +52,10 @@ public class SemanticModelOutlineUiModule extends AbstractGenericModule {
 		return PluginImageHelper.class;
 	}
 
-//	public void configureToggleLinkWithEditorOutlineContribution(Binder binder) {
-//		binder.bind(IOutlineContribution.class).annotatedWith(IOutlineContribution.LinkWithEditor.class)
-//				.to(LinkWithEditorOutlineContribution.class);
-//	}
+	public void configureToggleLinkWithEditorOutlineContribution(Binder binder) {
+		binder.bind(IOutlineContribution.class).annotatedWith(IOutlineContribution.LinkWithEditor.class)
+				.to(LinkWithEditorOutlineContribution.class);
+	}
 //	
 //	public void configureFilterOperationsOutlineContribution(Binder binder) {
 //		binder.bind(IOutlineContribution.class).annotatedWith(Names.named("FilterHiddenLeafsContribution")).to(FilterHiddenLeafsContribution.class);
