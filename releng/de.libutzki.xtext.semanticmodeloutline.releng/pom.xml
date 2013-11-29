@@ -21,8 +21,8 @@
 				<configuration>
 					<target>
 						<artifact>
-							<groupId>de.libutzki.xtext.nodemodeloutline</groupId>
-							<artifactId>de.libutzki.xtext.nodemodeloutline.target</artifactId>
+							<groupId>de.libutzki.xtext.semanticmodeloutline</groupId>
+							<artifactId>de.libutzki.xtext.semanticmodeloutline.target</artifactId>
 							<version>${project.version}</version>
 						</artifact>
 					</target>
