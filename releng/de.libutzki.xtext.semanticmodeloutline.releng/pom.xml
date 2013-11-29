@@ -58,4 +58,16 @@
 		</plugins>
 	</build>
 
+	<modules>
+		<module>
+			../../features/de.libutzki.xtext.semanticmodeloutline.feature
+		</module>
+		<module>../de.libutzki.xtext.semanticmodeloutline.repo</module>
+		<module>
+			../de.libutzki.xtext.semanticmodeloutline.target
+		</module>
+		<module>
+			../../plugins/de.libutzki.xtext.semanticmodeloutline.ui
+		</module>
+	</modules>
 </project>

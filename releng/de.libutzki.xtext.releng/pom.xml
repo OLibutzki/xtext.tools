@@ -76,6 +76,9 @@
 	</distributionManagement>
 	<modules>
 		<module>../de.libutzki.xtext.nodemodeloutline.releng</module>
+		<module>
+			../de.libutzki.xtext.semanticmodeloutline.releng
+		</module>
 		<module>../de.libutzki.xtext.distribution.releng</module>
 	</modules>
 </project>
