@@ -12,6 +12,12 @@
 				<type>zip</type>
 				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
+			<dependency>
+				<groupId>de.libutzki.xtext.semanticmodeloutline</groupId>
+				<artifactId>de.libutzki.xtext.semanticmodeloutline.repo</artifactId>
+				<type>zip</type>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<build>
@@ -35,9 +41,15 @@
 									<groupId>de.libutzki.xtext.nodemodeloutline</groupId>
 									<artifactId>de.libutzki.xtext.nodemodeloutline.repo</artifactId>
 									<type>zip</type>
-
 									<overWrite>true</overWrite>
 									<outputDirectory>${project.build.directory}/repos/nodemodeloutline</outputDirectory>
+								</artifactItem>
+								<artifactItem>
+									<groupId>de.libutzki.xtext.semanticmodeloutline</groupId>
+									<artifactId>de.libutzki.xtext.semanticmodeloutline.repo</artifactId>
+									<type>zip</type>
+									<overWrite>true</overWrite>
+									<outputDirectory>${project.build.directory}/repos/semanticmodeloutline</outputDirectory>
 								</artifactItem>
 							</artifactItems>
 						</configuration>

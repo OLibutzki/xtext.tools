@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="de.libutzki.xtext.nodemodeloutline.feature"
-      label="Xtext Node Model Outline"
+      id="de.libutzki.xtext.semanticmodeloutline.feature"
+      label="Xtext Semantic Model Outline"
       version="0.0.1.qualifier"
       provider-name="Oliver Libutzki &lt;oliver@libutzki.de&gt;">
 
    <description url="http://www.example.com/description">
-      Xtext Node Model Outline
+      Xtext Semantic Model Outline
    </description>
 
    <copyright url="http://www.example.com/copyright">
@@ -18,7 +18,7 @@
    </license>
 
    <plugin
-         id="de.libutzki.xtext.nodemodeloutline.ui"
+         id="de.libutzki.xtext.semanticmodeloutline.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
