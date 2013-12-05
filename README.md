@@ -48,6 +48,8 @@ As the grammar is an Xtext language itself it is represented as an EMF model, to
 
 Xtext Tools tries to stop exploring your models by using the debugger. It provides different views in order to visualize the different underlying models.
 
+In contrast to generic EMF model viewers the Semantic Outline View is capable of linking between the selected the language element and the model element bidirectionally.
+
 These views aim at language designer and are usually useless for the language's end users.
 
 ## License
