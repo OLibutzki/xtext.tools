@@ -12,8 +12,7 @@ Require-Bundle: org.eclipse.xtext.ui,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtext.ui.shared,
  org.eclipse.xtext.common.types,
- org.eclipse.xtext.xbase;resolution:=optional,
- org.eclipse.xtext.xbase.ui;bundle-version="2.4.3"
+ org.eclipse.xtext.xbase;resolution:=optional
 Bundle-Activator: de.libutzki.xtext.semanticmodeloutline.ui.SemanticModelOutlineActivator
 Bundle-Vendor: %providerName
 Bundle-ActivationPolicy: lazy
