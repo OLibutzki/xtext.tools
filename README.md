@@ -4,7 +4,7 @@ Feel free to add issues in order to improve the tool.
 
 ## Node Model Outline
 
-The node model outline provides a view to investigate the node model of your Xtext based model file.
+The Node Model Outline provides a view to investigate the node model of your Xtext based model file.
 It's possible to link the outline with the editor bidirectionally.
 
 ## Semantic Model Outline
@@ -13,21 +13,29 @@ The semantic model outline provides a view to investigate the semantic model (AS
 It's possible to link the outline with the editor bidirectionally.
 
 
-### Install Xtext Tools from Update Site 
+## Install Xtext Tools from Update Site 
 If you have an Eclipse running : 
 
 1. Choose **Help -> Install New Software...** from the menu bar and click **Add...** 
 2. Insert this url: **http://xtexttools.olibutzki.cloudbees.net/**
 3. Select the category *Xtext Tools* and complete the wizard by clicking the **Next** button until you can click **Finish**.
-4. After a quick download and a restart of Eclipse, the node model outline is ready to use.   
+4. After a quick download and a restart of Eclipse, the Node Model Outline is ready to use.   
 
-### Integrating the node model outline
+## Integrating the Node Model Outline
 If you have an Eclipse running : 
 
 1. Choose **Window -> Show View -> Other...** from the menu bar
-2. Select *Xtext Tools* -> *Node Model Outline* and/or *Semantic Model Outline*
-3. The outline(s) is/are added to your workbench
-4. If you open an Xtext based file, the Node Model Outline displays the underlying Node Model and the Semantic Model Outline displays the underlying Semantic Model.
+2. Select *Xtext Tools* -> *Node Model Outline*
+3. The outline is added to your workbench
+4. If you open an Xtext based file, the Node Model Outline displays the underlying Node Model
+
+## Integrating the Semantic Model Outline
+If you have an Eclipse running : 
+
+1. Choose **Window -> Show View -> Other...** from the menu bar
+2. Select *Xtext Tools* -> *Semantic Model Outline*
+3. The outline is added to your workbench
+4. If you open an Xtext based file, the Semantic Model Outline displays the underlying Semantic Model (AST)
 
 ## Motivation
 
