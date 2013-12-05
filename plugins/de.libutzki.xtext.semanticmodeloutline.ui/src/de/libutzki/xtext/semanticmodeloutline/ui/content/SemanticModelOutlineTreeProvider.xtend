@@ -11,9 +11,11 @@ import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.swt.graphics.Image
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils
 import org.eclipse.xtext.ui.IImageHelper
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider
+import org.eclipse.xtext.util.TextRegion
 
 class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	
@@ -23,6 +25,7 @@ class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	IImageHelper imageHelper
 	
 	override _createChildren(IOutlineNode parentNode, EObject modelElement) {
+		createUriNode(parentNode, modelElement)
 		modelElement.eClass.EAllStructuralFeatures.forEach[ feature |
 			if (modelElement.eIsSet(feature)) {
 				switch feature {
@@ -33,6 +36,15 @@ class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 				}
 			}
 		]
+	}
+	
+	def protected createUriNode(IOutlineNode parentNode, EObject modelElement) {
+		val uriNode = new UriNode(modelElement, parentNode, imageHelper.getImage("filterUri.gif"))
+		val parserNode = NodeModelUtils.getNode(modelElement);
+		if (parserNode != null)
+			uriNode.textRegion = new TextRegion(parserNode.offset, parserNode.length)
+		if (isLocalElement(parentNode, modelElement))
+			uriNode.setShortTextRegion(locationInFileProvider.getSignificantTextRegion(modelElement));
 	}
 	
 	def protected createAttributeNode(IOutlineNode parentNode, EObject modelElement, EAttribute eAttribute) {

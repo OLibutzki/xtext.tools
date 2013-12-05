@@ -14,7 +14,10 @@ import org.eclipse.xtext.ui.editor.outline.actions.OutlineWithEditorLinker;
 import org.eclipse.xtext.ui.editor.preferences.IPreferenceStoreAccess;
 
 import com.google.inject.Binder;
+import com.google.inject.name.Names;
 
+import de.libutzki.xtext.semanticmodeloutline.ui.actions.FilterAttributesOutlineContribution;
+import de.libutzki.xtext.semanticmodeloutline.ui.actions.FilterUriOutlineContribution;
 import de.libutzki.xtext.semanticmodeloutline.ui.actions.SemanticModelOutlineWithEditorLinker;
 import de.libutzki.xtext.semanticmodeloutline.ui.content.SemanticModelOutlineLabelProvider;
 import de.libutzki.xtext.semanticmodeloutline.ui.content.SemanticModelOutlineTreeProvider;
@@ -63,10 +66,13 @@ public class SemanticModelOutlineUiModule extends AbstractGenericModule {
 		binder.bind(IOutlineContribution.class).annotatedWith(IOutlineContribution.LinkWithEditor.class)
 				.to(LinkWithEditorOutlineContribution.class);
 	}
-//	
-//	public void configureFilterOperationsOutlineContribution(Binder binder) {
-//		binder.bind(IOutlineContribution.class).annotatedWith(Names.named("FilterHiddenLeafsContribution")).to(FilterHiddenLeafsContribution.class);
-//	} 
 	
+	public void configureFilterAttributesOutlineContribution(Binder binder) {
+		binder.bind(IOutlineContribution.class).annotatedWith(Names.named("FilterAttributesOutlineContribution")).to(FilterAttributesOutlineContribution.class);
+	} 
+	
+	public void configureFilterUriOutlineContribution(Binder binder) {
+		binder.bind(IOutlineContribution.class).annotatedWith(Names.named("FilterUriOutlineContribution")).to(FilterUriOutlineContribution.class);
+	} 
 	
 }
