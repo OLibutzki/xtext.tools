@@ -17,6 +17,7 @@ import com.google.inject.Binder;
 import com.google.inject.name.Names;
 
 import de.libutzki.xtext.semanticmodeloutline.ui.actions.FilterAttributesOutlineContribution;
+import de.libutzki.xtext.semanticmodeloutline.ui.actions.FilterDerivedElementsOutlineContribution;
 import de.libutzki.xtext.semanticmodeloutline.ui.actions.FilterUriOutlineContribution;
 import de.libutzki.xtext.semanticmodeloutline.ui.actions.SemanticModelOutlineWithEditorLinker;
 import de.libutzki.xtext.semanticmodeloutline.ui.content.SemanticModelOutlineLabelProvider;
@@ -74,5 +75,13 @@ public class SemanticModelOutlineUiModule extends AbstractGenericModule {
 	public void configureFilterUriOutlineContribution(Binder binder) {
 		binder.bind(IOutlineContribution.class).annotatedWith(Names.named("FilterUriOutlineContribution")).to(FilterUriOutlineContribution.class);
 	} 
+	
+	public void configureFilterDerivedElementsOutlineContribution(Binder binder) {
+		binder.bind(IOutlineContribution.class).annotatedWith(Names.named("FilterDerivedElementsOutlineContribution")).to(FilterDerivedElementsOutlineContribution.class);
+	} 
+	
+	public Class<? extends org.eclipse.xtext.ui.editor.outline.impl.OutlineNodeElementOpener> bindOutlineNodeElementOpener() {
+		return SemanticModelOutlineNodeElementOpener.class;
+	}
 	
 }
