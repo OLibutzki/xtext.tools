@@ -16,12 +16,11 @@ import org.eclipse.xtext.resource.IResourceServiceProvider
 import org.eclipse.xtext.ui.IImageHelper
 import org.eclipse.xtext.ui.editor.model.IXtextDocument
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode
+import org.eclipse.xtext.ui.editor.outline.impl.AbstractOutlineNode
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider
-import org.eclipse.xtext.ui.editor.outline.impl.EStructuralFeatureNode
+import org.eclipse.xtext.ui.editor.outline.impl.EObjectNode
 import org.eclipse.xtext.util.TextRegion
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
-import org.eclipse.xtext.ui.editor.outline.impl.AbstractOutlineNode
-import org.eclipse.xtext.ui.editor.outline.impl.EObjectNode
 
 class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 
@@ -32,6 +31,9 @@ class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 
 	@Inject
 	IResourceServiceProvider.Registry reg
+	
+	@Inject
+	extension DerivedHelper
 
 	override createRoot(IXtextDocument document) {
 		val documentNode = new SemanticModelOutlineRootNode(labelProvider.getImage(document),
@@ -111,8 +113,6 @@ class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 			val label = labelProvider.getText(object)
 			createCrossReferenceNode(parentNode, modelElement, eReference, imageHelper.getImage("reference.gif"),
 				'''ÇeReference.nameÈ -> ÇlabelÈ'''.toString, object as EObject)
-
-		// createEObjectNode(parentNode, object as EObject, null, '''ÇeReference.nameÈ = ÇlabelÈ'''.toString, false)
 		}
 	}
 
@@ -134,12 +134,6 @@ class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 		setTextRegionForDerivedElement(parentNode, crossReferenceNode, owner)
 		crossReferenceNode
 	}
-
-//	override protected createEStructuralFeatureNode(IOutlineNode parentNode, EObject owner, EStructuralFeature feature, Image image, Object text, boolean isLeaf) {
-//		val eStructuralFeatureNode = super.createEStructuralFeatureNode(parentNode, owner, feature, image, text, isLeaf)
-//		setTextRegionForDerivedElement(parentNode, eStructuralFeatureNode, owner)
-//		eStructuralFeatureNode
-//	}
 	
 	override protected createEObjectNode(IOutlineNode parentNode, EObject modelElement, Image image, Object text,
 		boolean isLeaf) {
@@ -169,11 +163,4 @@ class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 		false
 	}
 
-	def protected isDerived(EObject eObject) {
-		var currentElement = eObject
-		while (currentElement.eContainer != null) {
-			currentElement = currentElement.eContainer
-		}
-		currentElement.eResource.contents.indexOf(currentElement) > 0
-	}
 }
