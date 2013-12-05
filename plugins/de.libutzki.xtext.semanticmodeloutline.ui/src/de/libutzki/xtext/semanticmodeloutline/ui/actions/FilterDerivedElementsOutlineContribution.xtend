@@ -30,7 +30,7 @@ class FilterDerivedElementsOutlineContribution extends AbstractFilterOutlineCont
 		action.setText("Hide derived elements");
 		action.setDescription("Hide derived elements");
 		action.setToolTipText("Hide derived elements");
-		//action.setImageDescriptor(imageHelper.getImageDescriptor("filterUri.gif"));
+		action.setImageDescriptor(imageHelper.getImageDescriptor("filterDerivedEClass.gif"));
 	}
 	
 	override getPreferenceKey() {

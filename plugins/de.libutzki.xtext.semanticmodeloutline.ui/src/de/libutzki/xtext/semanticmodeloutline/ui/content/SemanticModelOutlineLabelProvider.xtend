@@ -40,7 +40,11 @@ class SemanticModelOutlineLabelProvider extends DeclarativeLabelProvider {
 	}
 	
 	def String image(EObject eObject) {
-		"eClass.gif"
+		if (eObject.derived) {
+			"derivedEClass.gif"
+		} else {		
+			"eClass.gif"
+		}
 	}
 	
 	

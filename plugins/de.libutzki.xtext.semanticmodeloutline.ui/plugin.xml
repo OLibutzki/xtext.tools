@@ -9,7 +9,7 @@
 		</category>
       <view
             class="de.libutzki.xtext.semanticmodeloutline.ui.SemanticModelOutlineExecutableExtensionFactory:de.libutzki.xtext.semanticmodeloutline.ui.view.SemanticModelOutline"
-            
+            icon="icons/semanticmodeloutline.gif"
             id="de.libutzki.xtext.semanticview.ui.view.semanticmodeloutline"
             name="%Views.SemanticModelView" 
             category="de.libutzki.xtext.tools"
