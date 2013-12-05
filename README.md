@@ -49,4 +49,5 @@ These views aim at language designer and are usually useless for the language's 
 Xtext Tools is published under the [Eclipse Public License (EPL)](http://www.eclipse.org/legal/epl-v10.html).
 
 The software includes items that have been sourced from third parties as set out below:
+
 [Eclipse MoDisco](http://www.eclipse.org/MoDisco/)
