@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.swt.graphics.Image
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils
 import org.eclipse.xtext.ui.IImageHelper
+import org.eclipse.xtext.ui.editor.model.IXtextDocument
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider
 import org.eclipse.xtext.util.TextRegion
@@ -23,9 +24,19 @@ class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	
 	@Inject
 	IImageHelper imageHelper
+
+	override createRoot(IXtextDocument document) {
+		val documentNode = new SemanticModelOutlineRootNode(labelProvider.getImage(document),
+				labelProvider.getText(document), document, this);
+		documentNode.setTextRegion(new TextRegion(0, document.getLength()));
+		return documentNode;
+	}
+	
 	
 	override _createChildren(IOutlineNode parentNode, EObject modelElement) {
 		createUriNode(parentNode, modelElement)
+
+		
 		modelElement.eClass.EAllStructuralFeatures.forEach[ feature |
 			if (modelElement.eIsSet(feature)) {
 				switch feature {
