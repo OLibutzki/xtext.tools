@@ -7,9 +7,11 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.AbstractOutlineNode;
@@ -190,12 +192,26 @@ public class NodeOutlineNode implements IOutlineNode, IOutlineNode.Extension {
 	}
 
 	protected URI getEObjectURI() {
-		return null;
+		return EcoreUtil.getURI(node.getSemanticElement());
 	}
 
 	@Override
-	public <T> T readOnly(IUnitOfWork<T, EObject> work) {
-		throw new UnsupportedOperationException();
+	public <T> T readOnly(final IUnitOfWork<T, EObject> work) {
+		if (getEObjectURI() != null) {
+			return getDocument().readOnly(new IUnitOfWork<T, XtextResource>() {
+				public T exec(XtextResource state) throws Exception {
+					EObject eObject;
+					if (state.getResourceSet() != null)
+						eObject = state.getResourceSet().getEObject(getEObjectURI(), true);
+					else
+						eObject = state.getEObject(getEObjectURI().fragment());
+					return work.exec(eObject);
+				}
+
+			});
+		} else {
+			return null;
+		}
 	}
 	
 	public INode getNode() {

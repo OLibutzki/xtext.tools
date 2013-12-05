@@ -10,7 +10,8 @@ Require-Bundle: org.eclipse.xtext.ui,
  org.eclipse.xtend.lib,
  com.google.guava,
  org.eclipse.xtext.xbase.lib,
- org.eclipse.xtext.ui.shared
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.xtext.common.types
 Bundle-Activator: de.libutzki.xtext.semanticmodeloutline.ui.SemanticModelOutlineActivator
 Bundle-Vendor: %providerName
 Bundle-ActivationPolicy: lazy

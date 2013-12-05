@@ -11,7 +11,6 @@ import org.eclipse.xtext.ui.editor.outline.IOutlineTreeProvider;
 import org.eclipse.xtext.ui.editor.outline.actions.IOutlineContribution;
 import org.eclipse.xtext.ui.editor.outline.actions.LinkWithEditorOutlineContribution;
 import org.eclipse.xtext.ui.editor.outline.actions.OutlineWithEditorLinker;
-import org.eclipse.xtext.ui.editor.outline.impl.OutlinePage;
 import org.eclipse.xtext.ui.editor.preferences.IPreferenceStoreAccess;
 
 import com.google.inject.Binder;
@@ -19,6 +18,7 @@ import com.google.inject.Binder;
 import de.libutzki.xtext.semanticmodeloutline.ui.actions.SemanticModelOutlineWithEditorLinker;
 import de.libutzki.xtext.semanticmodeloutline.ui.content.SemanticModelOutlineLabelProvider;
 import de.libutzki.xtext.semanticmodeloutline.ui.content.SemanticModelOutlineTreeProvider;
+import de.libutzki.xtext.semanticmodeloutline.ui.page.SemanticModelOutlinePage;
 import de.libutzki.xtext.semanticmodeloutline.ui.preferences.LanguageIndependentPreferenceStoreAccessImpl;
 
 public class SemanticModelOutlineUiModule extends AbstractGenericModule {
@@ -30,7 +30,7 @@ public class SemanticModelOutlineUiModule extends AbstractGenericModule {
 	}
 	
 	public Class<? extends IContentOutlinePage> bindIContentOutlinePage() {
-		return OutlinePage.class;
+		return SemanticModelOutlinePage.class;
 	}
 	
 	public Class<? extends IOutlineTreeProvider> bindIOutlineTreeProvider() {

@@ -12,7 +12,6 @@ import org.eclipse.xtext.ui.editor.outline.IOutlineTreeProvider;
 import org.eclipse.xtext.ui.editor.outline.actions.IOutlineContribution;
 import org.eclipse.xtext.ui.editor.outline.actions.LinkWithEditorOutlineContribution;
 import org.eclipse.xtext.ui.editor.outline.actions.OutlineWithEditorLinker;
-import org.eclipse.xtext.ui.editor.outline.impl.OutlinePage;
 import org.eclipse.xtext.ui.editor.preferences.IPreferenceStoreAccess;
 
 import com.google.inject.Binder;
@@ -23,6 +22,7 @@ import de.libutzki.xtext.nodemodeloutline.ui.actions.FilterHiddenLeafsContributi
 import de.libutzki.xtext.nodemodeloutline.ui.actions.NodeModelOutlineWithEditorLinker;
 import de.libutzki.xtext.nodemodeloutline.ui.content.NodeModelOutlineLabelProvider;
 import de.libutzki.xtext.nodemodeloutline.ui.content.NodeModelOutlineTreeProvider;
+import de.libutzki.xtext.nodemodeloutline.ui.page.NodeModelOutlinePage;
 import de.libutzki.xtext.nodemodeloutline.ui.preferences.LanguageIndependentPreferenceStoreAccessImpl;
 
 public class NodeModelOutlineUiModule extends AbstractGenericModule {
@@ -34,7 +34,7 @@ public class NodeModelOutlineUiModule extends AbstractGenericModule {
 	}
 	
 	public Class<? extends IContentOutlinePage> bindIContentOutlinePage() {
-		return OutlinePage.class;
+		return NodeModelOutlinePage.class;
 	}
 	
 	public Class<? extends IOutlineTreeProvider> bindIOutlineTreeProvider() {

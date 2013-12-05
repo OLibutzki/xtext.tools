@@ -1,16 +1,19 @@
 package de.libutzki.xtext.semanticmodeloutline.ui.content
 
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.ui.editor.outline.IOutlineNode
-import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider
-import org.eclipse.emf.ecore.EReference
+import com.google.inject.Inject
+import java.util.List
+import org.apache.log4j.Logger
 import org.eclipse.emf.ecore.EAttribute
 import org.eclipse.emf.ecore.EDataType
-import org.apache.log4j.Logger
 import org.eclipse.emf.ecore.EEnum
-import java.util.List
-import com.google.inject.Inject
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.EReference
+import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.emf.ecore.util.EcoreUtil
+import org.eclipse.swt.graphics.Image
 import org.eclipse.xtext.ui.IImageHelper
+import org.eclipse.xtext.ui.editor.outline.IOutlineNode
+import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider
 
 class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	
@@ -55,7 +58,7 @@ class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 		val object = modelElement.eGet(eReference)
 
 			if (eReference.many) {
-				val listSize = (object as List).size
+				val listSize = (object as List<?>).size
 				createEStructuralFeatureNode(parentNode, modelElement, eReference, imageHelper.getImage("containment.gif"), '''«eReference.name» («listSize»)'''.toString, false)
 			} else {
 				val label = labelProvider.getText(object)
@@ -68,65 +71,41 @@ class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	def protected createReferenceNode(IOutlineNode parentNode, EObject modelElement, EReference eReference) {
 		val object = modelElement.eGet(eReference)
 			if (eReference.many) {
-				val eObjectList = (object as List).filter(EObject)
+				val eObjectList = (object as List<?>).filter(EObject)
 				val listSize = eObjectList.size
 				val parent = createEStructuralFeatureNode(parentNode, modelElement, eReference, imageHelper.getImage("reference.gif"), '''«eReference.name» («listSize»)'''.toString, false)
 				eObjectList.forEach[
 					val label = labelProvider.getText(it)
-					createEStructuralFeatureNode(parent, modelElement, eReference, null, '''-> «label»'''.toString, true)
+					createCrossReferenceNode(parent, modelElement, eReference, null, '''-> «label»'''.toString, it)
 				]
 			} else {
 				val label = labelProvider.getText(object)
-				createEStructuralFeatureNode(parentNode, modelElement, eReference, imageHelper.getImage("reference.gif"), '''«eReference.name» -> «label»'''.toString, true)
+				createCrossReferenceNode(parentNode, modelElement, eReference, imageHelper.getImage("reference.gif"), '''«eReference.name» -> «label»'''.toString, object as EObject)
 				// createEObjectNode(parentNode, object as EObject, null, '''«eReference.name» = «label»'''.toString, false)
-			}
-		
-		val value = labelProvider.getText(object)
-//		val eType = eReference.EType
-//		val value = 
-//			switch eType {
-//				EDataType : {
-//					logger.error('''Cannot determine value for «object.class.name»''') 
-//					""
-//				}
-//				default : {
-//					logger.error('''Cannot determine value for «object.class.name»''') 
-//					""
-//				}
-//			}
-		val String label = '''«eReference.name»«IF !value.nullOrEmpty» -> «value»«ENDIF»'''
-		
-		
+			}	
 	}
 	
-//	def protected void _createChildren(EClassStructuralFeatureNode parentNode, EObject modelElement) {
-//		val values = modelElement.eClass.eGet(parentNode.EStructuralFeature)
-//		val allFeatures = EcoreUtil2.typeSelect( values as List<?>, EStructuralFeature)
-//		allFeatures.forEach[
-//			createEStructuralFeatureNode(parentNode, modelElement, it, null, it.name, true)
-//		]
-		
-		
-//		Object values = modelElement.eGet(parentNode.getEStructuralFeature());
-//		if (values != null) {
-//			if (parentNode.getEStructuralFeature().isMany()) {
-//				for (EObject value : EcoreUtil2.typeSelect((List<?>) values, EObject.class)) {
-//					createNode(parentNode, value);
-//				}
-//			} else {
-//				if (values instanceof EObject)
-//					createNode(parentNode, (EObject) values);
-//			}
-//		}
-//	}
+	
+	def protected CrossReferenceNode createCrossReferenceNode(IOutlineNode parentNode, EObject owner,
+			EStructuralFeature feature, Image image, Object text, EObject targetObject) {
+		val isFeatureSet = owner.eIsSet(feature)
+		val targetURI = EcoreUtil.getURI(targetObject)
+		val crossReferenceNode = new CrossReferenceNode(owner, feature, parentNode, image, text, targetURI)
+		if (isFeatureSet) {
+			val region = 
+				if (feature.many) {
+					val collection = (owner.eGet(feature) as List<?>)
+					val index = collection.indexOf(targetObject)
+					locationInFileProvider.getFullTextRegion(owner, feature, index)
+				} else {
+					locationInFileProvider.getFullTextRegion(owner, feature, 0)
+				}
+			crossReferenceNode.textRegion = region
+		}
+		crossReferenceNode
+	}
 	
 	override protected _isLeaf(EObject modelElement) {
 		false
 	}
-	
-//	def private createAttributesNode(IOutlineNode parentNode, EObject eObject) {
-//		new EClassStructuralFeatureNode(eObject, EcorePackage.Literals.ECLASS__EALL_ATTRIBUTES, parentNode, null as Image, "Attributes", false)
-//	}
-	
-	
 }

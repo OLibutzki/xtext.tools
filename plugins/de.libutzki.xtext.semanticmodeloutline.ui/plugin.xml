@@ -16,5 +16,49 @@
             restorable="true">
       </view>
    </extension>
+   
+    <extension
+         point="org.eclipse.ui.commands">
+     <!-- navigate to target -->
+      <command
+            id="de.libutzki.xtext.semanticmodeloutline.ui.actions.navigatetotarget"
+            categoryId="org.eclipse.ui.category.edit"
+            description="Navigates to the selected element"
+            name="Navigate to target element">
+      </command>
+    </extension>
+   
+      <extension point="org.eclipse.ui.menus">
+         <menuContribution locationURI="popup:de.libutzki.xtext.semanticmodeloutline.ui?after=additions">
+			<command commandId="de.libutzki.xtext.semanticmodeloutline.ui.actions.navigatetotarget" 
+				style="push" tooltip="Navigate to target element">
+         		<visibleWhen checkEnabled="false">
+	            	<and>
+	            		<reference definitionId="isXtextEditorActive" />
+		                <iterate>
+							<adapt type="de.libutzki.xtext.semanticmodeloutline.ui.content.CrossReferenceNode" />
+						</iterate>
+					</and>
+				</visibleWhen>
+			</command>
+         </menuContribution>
+    </extension>
+   
+    <extension
+        point="org.eclipse.ui.handlers">
+      	<!-- navigate to target -->
+        <handler
+            class="de.libutzki.xtext.semanticmodeloutline.ui.SemanticModelOutlineExecutableExtensionFactory:de.libutzki.xtext.semanticmodeloutline.ui.actions.NavigateToTargetHandler"
+            commandId="de.libutzki.xtext.semanticmodeloutline.ui.actions.navigatetotarget">
+            <activeWhen>
+            	<and>
+            		<reference definitionId="isXtextEditorActive" />
+	                <iterate>
+						<adapt type="de.libutzki.xtext.semanticmodeloutline.ui.content.CrossReferenceNode" />
+					</iterate>
+				</and>
+            </activeWhen>
+        </handler>
+    </extension>
 
 </plugin>

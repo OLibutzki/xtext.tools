@@ -6,6 +6,7 @@ import org.eclipse.xtext.resource.IResourceServiceProvider
 import org.eclipse.xtext.ui.label.DeclarativeLabelProvider
 import org.eclipse.jface.viewers.ILabelProvider
 import org.eclipse.xtext.ui.IImageHelper.IImageDescriptorHelper
+import org.eclipse.xtext.common.types.JvmGenericType
 
 class SemanticModelOutlineLabelProvider extends DeclarativeLabelProvider {
 	
@@ -17,6 +18,11 @@ class SemanticModelOutlineLabelProvider extends DeclarativeLabelProvider {
 		val langLabelProvider = reg.getResourceServiceProvider(object.eResource.URI).get(ILabelProvider)
 		val label = langLabelProvider.getText(object)
 		'''[«object.eClass.name»] «label»'''
+	}
+	
+	def String text(JvmGenericType jvmType) {
+		val label = jvmType.qualifiedName
+		'''[«jvmType.eClass.name»] «label»'''
 	}
 	
 	def String image(EObject eObject) {

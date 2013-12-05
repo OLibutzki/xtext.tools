@@ -10,6 +10,7 @@ import org.eclipse.xtext.nodemodel.impl.RootNode
 import org.eclipse.xtext.ui.editor.utils.EditorUtils
 import org.eclipse.xtext.ui.label.DeclarativeLabelProvider
 import org.eclipse.swt.graphics.Color
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils
 
 /**
  * @author Oliver Libutzki <oliver@libutzki.de>
@@ -39,7 +40,7 @@ class NodeModelOutlineLabelProvider extends DeclarativeLabelProvider {
 	}
 	
 	def String text(INode leafNode) {
-		leafNode.text
+		NodeModelUtils.getTokenText(leafNode)
 	}
 	
 	def String image(ICompositeNode compositeNode) {
