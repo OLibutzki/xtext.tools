@@ -67,7 +67,7 @@
 							<directory>${project.build.directory}/repos</directory>
 						</resource>
 						<resource>
-							<directory>composites</directory>
+							<directory>content</directory>
 						</resource>
 					</webResources>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
