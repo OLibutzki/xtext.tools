@@ -17,6 +17,7 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.IOutlineTreeProvider;
+import org.eclipse.xtext.util.ITextRegion;
 import org.eclipse.xtext.util.PolymorphicDispatcher;
 import org.eclipse.xtext.util.TextRegion;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
@@ -171,9 +172,8 @@ public class NodeModelOutlineTreeProvider implements IOutlineTreeProvider, INode
     boolean _matched = false;
     if (!_matched) {
       if (labelProvider instanceof IStyledLabelProvider) {
-        final IStyledLabelProvider _iStyledLabelProvider = (IStyledLabelProvider)labelProvider;
         _matched=true;
-        StyledString _styledText = ((IStyledLabelProvider)_iStyledLabelProvider).getStyledText(node);
+        StyledString _styledText = ((IStyledLabelProvider)this.labelProvider).getStyledText(node);
         _switchResult = _styledText;
       }
     }
@@ -189,6 +189,22 @@ public class NodeModelOutlineTreeProvider implements IOutlineTreeProvider, INode
    */
   protected Image _image(final Object node) {
     return this.labelProvider.getImage(node);
+  }
+  
+  protected NodeOutlineNode _createNode(final RootNodeOutlineNode rootNode, final ICompositeNode node) {
+    NodeOutlineNode _createOutlineNode = this.createOutlineNode(rootNode, node);
+    final Procedure1<NodeOutlineNode> _function = new Procedure1<NodeOutlineNode>() {
+      public void apply(final NodeOutlineNode it) {
+        ITextRegion _significantTextRegion = rootNode.getSignificantTextRegion();
+        it.setTextRegion(_significantTextRegion);
+      }
+    };
+    NodeOutlineNode _doubleArrow = ObjectExtensions.<NodeOutlineNode>operator_doubleArrow(_createOutlineNode, _function);
+    return _doubleArrow;
+  }
+  
+  protected void _createChildren(final RootNodeOutlineNode rootNode, final ICompositeNode node) {
+    this.createNode(rootNode, node);
   }
   
   protected void _createChildren(final NodeOutlineNode parentNode, final ICompositeNode node) {

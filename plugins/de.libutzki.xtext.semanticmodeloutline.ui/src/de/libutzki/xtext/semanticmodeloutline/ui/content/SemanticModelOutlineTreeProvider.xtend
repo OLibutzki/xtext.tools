@@ -57,7 +57,7 @@ class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	}
 
 	def protected createUriNode(IOutlineNode parentNode, EObject modelElement) {
-		val uriNode = new UriNode(modelElement, parentNode, imageHelper.getImage("filterUri.gif"))
+		val uriNode = new UriNode(modelElement, parentNode, imageHelper.getImage("uri.gif"))
 		val parserNode = NodeModelUtils.getNode(modelElement);
 		if (parserNode != null)
 			uriNode.textRegion = new TextRegion(parserNode.offset, parserNode.length)

@@ -39,6 +39,10 @@
 							<includes>
 								<include>**</include>
 							</includes>
+							<excludes>
+								<exclude>.svn/**</exclude>
+								<exclude>.gitignore</exclude>
+							</excludes>
 						</fileset>
 					</filesets>
 				</configuration>

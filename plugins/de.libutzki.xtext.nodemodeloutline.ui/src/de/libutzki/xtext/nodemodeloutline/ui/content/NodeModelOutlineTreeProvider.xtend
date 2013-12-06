@@ -12,7 +12,6 @@ import org.eclipse.xtext.ui.editor.outline.IOutlineTreeProvider
 import org.eclipse.xtext.util.PolymorphicDispatcher
 import org.eclipse.xtext.util.TextRegion
 
-
 /**
  * @author Oliver Libutzki <oliver@libutzki.de>
  *
@@ -103,13 +102,24 @@ class NodeModelOutlineTreeProvider implements IOutlineTreeProvider, INodeModelOu
 	}
 	
 	
+	
+	def protected _createNode(RootNodeOutlineNode rootNode, ICompositeNode node) {
+		createOutlineNode(rootNode, node) => [
+			textRegion = rootNode.significantTextRegion
+		]
+	}
+	def protected _createChildren(RootNodeOutlineNode rootNode, ICompositeNode node) {
+		rootNode.createNode(node)
+	}
 	def protected _createChildren(NodeOutlineNode parentNode, ICompositeNode node) {
+
 		node.children.forEach[parentNode.createNode(it)]
 	}
 	
 	def boolean _isLeaf(ICompositeNode compositeNode) {
 		false
 	}
-	
+
+
 	
 }
