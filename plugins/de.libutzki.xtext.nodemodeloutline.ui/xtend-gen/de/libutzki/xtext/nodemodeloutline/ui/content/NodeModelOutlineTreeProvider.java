@@ -171,8 +171,9 @@ public class NodeModelOutlineTreeProvider implements IOutlineTreeProvider, INode
     boolean _matched = false;
     if (!_matched) {
       if (labelProvider instanceof IStyledLabelProvider) {
+        final IStyledLabelProvider _iStyledLabelProvider = (IStyledLabelProvider)labelProvider;
         _matched=true;
-        StyledString _styledText = ((IStyledLabelProvider)this.labelProvider).getStyledText(node);
+        StyledString _styledText = ((IStyledLabelProvider)_iStyledLabelProvider).getStyledText(node);
         _switchResult = _styledText;
       }
     }
