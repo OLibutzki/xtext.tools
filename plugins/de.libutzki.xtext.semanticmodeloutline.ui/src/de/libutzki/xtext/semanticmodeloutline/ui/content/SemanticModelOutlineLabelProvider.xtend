@@ -29,12 +29,12 @@ class SemanticModelOutlineLabelProvider extends DeclarativeLabelProvider {
 	}
 	
 	def protected getLabel(EObject eObject, String label) {
-		val typePrefix = '''[ÇeObject.eClass.nameÈ]'''
+		val typePrefix = '''[Â«eObject.eClass.nameÂ»]'''
 		if (eObject.derived) {
 			val labelStyledString = new StyledString(label, [it.font = JFaceResources.getFontRegistry().getItalic(JFaceResources.DEFAULT_FONT)])
-			new StyledString('''ÇtypePrefixÈ ''').append(labelStyledString)
+			new StyledString('''Â«typePrefixÂ» ''').append(labelStyledString)
 		} else {
-			'''ÇtypePrefixÈ ÇlabelÈ'''.toString
+			'''Â«typePrefixÂ» Â«labelÂ»'''.toString
 		}
 
 	}

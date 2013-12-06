@@ -83,29 +83,26 @@ public class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider
           boolean _matched = false;
           if (!_matched) {
             if (feature instanceof EAttribute) {
-              final EAttribute _eAttribute = (EAttribute)feature;
               _matched=true;
-              SemanticModelOutlineTreeProvider.this.createAttributeNode(parentNode, modelElement, _eAttribute);
+              SemanticModelOutlineTreeProvider.this.createAttributeNode(parentNode, modelElement, ((EAttribute)feature));
             }
           }
           if (!_matched) {
             if (feature instanceof EReference) {
-              final EReference _eReference = (EReference)feature;
-              boolean _isContainment = _eReference.isContainment();
+              boolean _isContainment = ((EReference)feature).isContainment();
               if (_isContainment) {
                 _matched=true;
-                SemanticModelOutlineTreeProvider.this.createContainmentNode(parentNode, modelElement, _eReference);
+                SemanticModelOutlineTreeProvider.this.createContainmentNode(parentNode, modelElement, ((EReference)feature));
               }
             }
           }
           if (!_matched) {
             if (feature instanceof EReference) {
-              final EReference _eReference = (EReference)feature;
-              boolean _isContainment = _eReference.isContainment();
+              boolean _isContainment = ((EReference)feature).isContainment();
               boolean _not = (!_isContainment);
               if (_not) {
                 _matched=true;
-                SemanticModelOutlineTreeProvider.this.createReferenceNode(parentNode, modelElement, _eReference);
+                SemanticModelOutlineTreeProvider.this.createReferenceNode(parentNode, modelElement, ((EReference)feature));
               }
             }
           }
@@ -151,7 +148,6 @@ public class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider
       boolean _matched = false;
       if (!_matched) {
         if (eType instanceof EEnum) {
-          final EEnum _eEnum = (EEnum)eType;
           _matched=true;
           String _string = object.toString();
           _switchResult = _string;
@@ -159,7 +155,6 @@ public class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider
       }
       if (!_matched) {
         if (eType instanceof EDataType) {
-          final EDataType _eDataType = (EDataType)eType;
           _matched=true;
           String _string = object.toString();
           _switchResult = _string;
@@ -345,12 +340,11 @@ public class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider
           boolean _matched = false;
           if (!_matched) {
             if (currentNode instanceof EObjectNode) {
-              final EObjectNode _eObjectNode = (EObjectNode)currentNode;
               boolean _isLocalElement = this.isLocalElement(parentNode, sourceElement);
               if (_isLocalElement) {
                 _matched=true;
                 ITextRegion _significantTextRegion = this.locationInFileProvider.getSignificantTextRegion(sourceElement);
-                _eObjectNode.setShortTextRegion(_significantTextRegion);
+                ((EObjectNode)currentNode).setShortTextRegion(_significantTextRegion);
               }
             }
           }

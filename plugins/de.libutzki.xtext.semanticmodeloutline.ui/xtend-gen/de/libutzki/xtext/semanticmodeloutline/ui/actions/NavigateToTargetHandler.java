@@ -39,9 +39,8 @@ public class NavigateToTargetHandler extends AbstractHandler {
       boolean _matched = false;
       if (!_matched) {
         if (currentSelection instanceof IStructuredSelection) {
-          final IStructuredSelection _iStructuredSelection = (IStructuredSelection)currentSelection;
           _matched=true;
-          Object _firstElement = _iStructuredSelection.getFirstElement();
+          Object _firstElement = ((IStructuredSelection)currentSelection).getFirstElement();
           _switchResult = ((CrossReferenceNode) _firstElement);
         }
       }

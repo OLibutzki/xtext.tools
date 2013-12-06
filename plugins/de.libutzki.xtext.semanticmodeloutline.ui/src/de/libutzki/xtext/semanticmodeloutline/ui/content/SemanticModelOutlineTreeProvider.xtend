@@ -50,7 +50,7 @@ class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 					EAttribute: createAttributeNode(parentNode, modelElement, feature)
 					EReference case feature.containment: createContainmentNode(parentNode, modelElement, feature)
 					EReference case !feature.containment: createReferenceNode(parentNode, modelElement, feature)
-					default: logger.error('''Unexpected type in createChildren: Çfeature.class.nameÈ''')
+					default: logger.error('''Unexpected type in createChildren: Â«feature.class.nameÂ»''')
 				}
 			}
 		]
@@ -76,7 +76,7 @@ class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 				object.toString
 			}
 		}
-		val String label = '''ÇeAttribute.nameÈÇIF !value.nullOrEmptyÈ = ÇvalueÈÇENDIFÈ'''
+		val String label = '''Â«eAttribute.nameÂ»Â«IF !value.nullOrEmptyÂ» = Â«valueÂ»Â«ENDIFÂ»'''
 
 		createEStructuralFeatureNode(parentNode, modelElement, eAttribute, imageHelper.getImage("attribute.gif"), label,
 			true)
@@ -89,11 +89,11 @@ class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 		if (eReference.many) {
 			val listSize = (object as List<?>).size
 			createEStructuralFeatureNode(parentNode, modelElement, eReference, imageHelper.getImage("containment.gif"),
-				'''ÇeReference.nameÈ (ÇlistSizeÈ)'''.toString, false)
+				'''Â«eReference.nameÂ» (Â«listSizeÂ»)'''.toString, false)
 		} else {
 			val label = labelProvider.getText(object)
 			createEObjectNode(parentNode, object as EObject, imageHelper.getImage("containment.gif"),
-				'''ÇeReference.nameÈ = ÇlabelÈ'''.toString, false)
+				'''Â«eReference.nameÂ» = Â«labelÂ»'''.toString, false)
 		}
 
 	}
@@ -104,15 +104,15 @@ class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 			val eObjectList = (object as List<?>).filter(EObject)
 			val listSize = eObjectList.size
 			val parent = createEStructuralFeatureNode(parentNode, modelElement, eReference,
-				imageHelper.getImage("reference.gif"), '''ÇeReference.nameÈ (ÇlistSizeÈ)'''.toString, false)
+				imageHelper.getImage("reference.gif"), '''Â«eReference.nameÂ» (Â«listSizeÂ»)'''.toString, false)
 			eObjectList.forEach [
 				val label = labelProvider.getText(it)
-				createCrossReferenceNode(parent, modelElement, eReference, null, '''-> ÇlabelÈ'''.toString, it)
+				createCrossReferenceNode(parent, modelElement, eReference, null, '''-> Â«labelÂ»'''.toString, it)
 			]
 		} else {
 			val label = labelProvider.getText(object)
 			createCrossReferenceNode(parentNode, modelElement, eReference, imageHelper.getImage("reference.gif"),
-				'''ÇeReference.nameÈ -> ÇlabelÈ'''.toString, object as EObject)
+				'''Â«eReference.nameÂ» -> Â«labelÂ»'''.toString, object as EObject)
 		}
 	}
 
