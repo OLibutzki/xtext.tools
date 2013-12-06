@@ -12,6 +12,9 @@ It's possible to link the outline with the editor bidirectionally.
 The semantic model outline provides a view to investigate the semantic model (AST) of your Xtext based model file.
 It's possible to link the outline with the editor bidirectionally.
 
+## Screencast
+
+[![Xtext Tools Screencast](http://img.youtube.com/vi/ZiBMCoVYJYA/0.jpg)](http://www.youtube.com/watch?v=ZiBMCoVYJYA)
 
 ## Install Xtext Tools from Update Site 
 If you have an Eclipse running : 
