@@ -30,7 +30,7 @@ class FilterHiddenLeafsContribution extends AbstractFilterOutlineContribution {
 		action.setText("Hide hidden nodes");
 		action.setDescription("Hide hidden nodes");
 		action.setToolTipText("Hide hidden nodes");
-		action.setImageDescriptor(imageHelper.getImageDescriptor("hiddennode.png"));
+		action.setImageDescriptor(imageHelper.getImageDescriptor("filterHiddenNode.png"));
 	}
 	
 	override getPreferenceKey() {
