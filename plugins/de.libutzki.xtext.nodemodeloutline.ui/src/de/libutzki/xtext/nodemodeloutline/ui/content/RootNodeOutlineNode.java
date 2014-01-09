@@ -1,6 +1,5 @@
 package de.libutzki.xtext.nodemodeloutline.ui.content;
 
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
@@ -21,14 +20,6 @@ public class RootNodeOutlineNode extends NodeOutlineNode {
 		this.document = document;
 		this.treeProvider = treeProvider;
 	}
-
-	public RootNodeOutlineNode(INode node, ImageDescriptor imageDescriptor, Object text, IXtextDocument document,
-			INodeModelOutlineTreeStructureProvider treeProvider) {
-		super(node, null, imageDescriptor, text, false);
-		this.document = document;
-		this.treeProvider = treeProvider;
-	}
-	
 	
 	@Override
 	public INodeModelOutlineTreeStructureProvider getTreeProvider() {

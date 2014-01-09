@@ -21,6 +21,10 @@ The feature includes items that have been sourced from third parties as set out 
 Eclipse MoDisco (http://www.eclipse.org/MoDisco/)
    </license>
 
+   <requires>
+      <import feature="org.eclipse.xtext.ui" version="2.4.0.v201303201134" match="greaterOrEqual"/>
+   </requires>
+
    <plugin
          id="de.libutzki.xtext.nodemodeloutline.ui"
          download-size="0"

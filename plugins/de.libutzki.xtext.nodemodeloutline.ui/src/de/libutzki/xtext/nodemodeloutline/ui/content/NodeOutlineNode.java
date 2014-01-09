@@ -15,7 +15,6 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.AbstractOutlineNode;
-import org.eclipse.xtext.ui.editor.outline.impl.BackgroundOutlineTreeProvider;
 import org.eclipse.xtext.util.ITextRegion;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
@@ -29,11 +28,9 @@ import com.google.common.collect.Lists;
  * @author Oliver Libutzki <oliver@libutzki.de>
  *
  */
-public class NodeOutlineNode implements IOutlineNode, IOutlineNode.Extension {
+public class NodeOutlineNode implements IOutlineNode{
 
 	private Image image;
-
-	private ImageDescriptor imageDescriptor;
 
 	private Object text;
 
@@ -55,18 +52,6 @@ public class NodeOutlineNode implements IOutlineNode, IOutlineNode.Extension {
 		this.node = node;
 		this.text = text == null ? "<unnamed>" : text;
 		this.image = image;
-		this.isLeaf = isLeaf;
-		setParent(parent);
-		textRegion = ITextRegion.EMPTY_REGION;
-	}
-
-	/**
-	 * @since 2.4
-	 */
-	protected NodeOutlineNode(INode node, IOutlineNode parent, ImageDescriptor imageDescriptor, Object text, boolean isLeaf) {
-		this.node = node;
-		this.text = text == null ? "<unnamed>" : text;
-		this.imageDescriptor = imageDescriptor;
 		this.isLeaf = isLeaf;
 		setParent(parent);
 		textRegion = ITextRegion.EMPTY_REGION;
@@ -141,19 +126,6 @@ public class NodeOutlineNode implements IOutlineNode, IOutlineNode.Extension {
 		this.image = image;
 	}
 
-	/**
-	 * @since 2.4
-	 */
-	public ImageDescriptor getImageDescriptor() {
-		return imageDescriptor;
-	}
-
-	/**
-	 * @since 2.4
-	 */
-	public void setImageDescriptor(ImageDescriptor imageDescriptor) {
-		this.imageDescriptor = imageDescriptor;
-	}
 
 	public IXtextDocument getDocument() {
 		if (parentOutlineNode != null) {
