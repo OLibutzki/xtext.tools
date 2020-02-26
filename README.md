@@ -1,5 +1,7 @@
 # Xtext Tools
 
+[![Build Status](https://travis-ci.com/OLibutzki/xtext.tools.svg?branch=master)](https://travis-ci.com/OLibutzki/xtext.tools)
+
 Feel free to add issues in order to improve the tool.
 
 ## Node Model Outline
