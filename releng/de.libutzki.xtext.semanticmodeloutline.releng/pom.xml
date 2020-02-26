@@ -9,7 +9,7 @@
 		<groupId>de.libutzki.xtext</groupId>
 		<artifactId>de.libutzki.xtext.releng</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../de.libutzki.xtext.releng</relativePath>
+		<relativePath>../..</relativePath>
 	</parent>
 
 	<build>
