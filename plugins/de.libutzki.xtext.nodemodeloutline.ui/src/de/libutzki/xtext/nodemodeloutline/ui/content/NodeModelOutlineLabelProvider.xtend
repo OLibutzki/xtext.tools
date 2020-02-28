@@ -1,24 +1,21 @@
 package de.libutzki.xtext.nodemodeloutline.ui.content
 
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.jface.viewers.StyledString
+import org.eclipse.swt.graphics.Color
 import org.eclipse.swt.graphics.RGB
+import org.eclipse.xtext.AbstractElement
+import org.eclipse.xtext.AbstractRule
+import org.eclipse.xtext.Action
+import org.eclipse.xtext.CrossReference
+import org.eclipse.xtext.Keyword
+import org.eclipse.xtext.RuleCall
 import org.eclipse.xtext.nodemodel.ICompositeNode
 import org.eclipse.xtext.nodemodel.ILeafNode
 import org.eclipse.xtext.nodemodel.INode
 import org.eclipse.xtext.nodemodel.impl.HiddenLeafNode
-import org.eclipse.xtext.nodemodel.impl.RootNode
 import org.eclipse.xtext.ui.editor.utils.EditorUtils
 import org.eclipse.xtext.ui.label.DeclarativeLabelProvider
-import org.eclipse.swt.graphics.Color
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.AbstractElement
-import org.eclipse.xtext.ParserRule
-import org.eclipse.xtext.AbstractRule
-import org.eclipse.xtext.RuleCall
-import org.eclipse.xtext.Keyword
-import org.eclipse.xtext.CrossReference
-import org.eclipse.xtext.Action
 
 /**
  * @author Oliver Libutzki <oliver@libutzki.de>
@@ -26,7 +23,7 @@ import org.eclipse.xtext.Action
  */
 class NodeModelOutlineLabelProvider extends DeclarativeLabelProvider {
 	
-	private Color hiddenLeafColor;
+	Color hiddenLeafColor;
 	
 //	def String text(INode leafNode) {
 //		NodeModelUtils.getTokenText(leafNode)
@@ -45,7 +42,7 @@ class NodeModelOutlineLabelProvider extends DeclarativeLabelProvider {
 	}
 	
 	def private getHiddenLeafColor() {
-		if (hiddenLeafColor == null) {
+		if (hiddenLeafColor === null) {
 			hiddenLeafColor = EditorUtils.colorFromRGB(new RGB(125, 125, 125))
 		}
 		hiddenLeafColor

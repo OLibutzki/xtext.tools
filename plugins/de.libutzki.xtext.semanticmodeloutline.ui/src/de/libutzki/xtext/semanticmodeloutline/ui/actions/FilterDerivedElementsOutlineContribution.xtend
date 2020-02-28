@@ -1,7 +1,6 @@
 package de.libutzki.xtext.semanticmodeloutline.ui.actions
 
 import com.google.inject.Inject
-import de.libutzki.xtext.semanticmodeloutline.ui.content.UriNode
 import org.eclipse.jface.action.Action
 import org.eclipse.xtext.ui.IImageHelper.IImageDescriptorHelper
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode

@@ -4,7 +4,6 @@ import com.google.inject.Inject
 import java.util.List
 import org.apache.log4j.Logger
 import org.eclipse.emf.ecore.EAttribute
-import org.eclipse.emf.ecore.EDataType
 import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
@@ -24,7 +23,7 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 
 class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 
-	private static Logger logger = Logger.getLogger(SemanticModelOutlineTreeProvider)
+	static Logger logger = Logger.getLogger(SemanticModelOutlineTreeProvider)
 
 	@Inject
 	IImageHelper imageHelper
@@ -59,7 +58,7 @@ class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	def protected createUriNode(IOutlineNode parentNode, EObject modelElement) {
 		val uriNode = new UriNode(modelElement, parentNode, imageHelper.getImage("uri.gif"))
 		val parserNode = NodeModelUtils.getNode(modelElement);
-		if (parserNode != null)
+		if (parserNode !== null)
 			uriNode.textRegion = new TextRegion(parserNode.offset, parserNode.length)
 		if (isLocalElement(parentNode, modelElement))
 			uriNode.setShortTextRegion(locationInFileProvider.getSignificantTextRegion(modelElement));
@@ -72,7 +71,7 @@ class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 			EEnum: {
 				object.toString
 			}
-			EDataType: {
+			default: {
 				object.toString
 			}
 		}
@@ -145,11 +144,11 @@ class SemanticModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	def private setTextRegionForDerivedElement(IOutlineNode parentNode, AbstractOutlineNode currentNode, EObject modelElement) {
 		if (modelElement.derived) {
 			val modelAssociations = reg.getResourceServiceProvider(modelElement.eResource.URI).get(IJvmModelAssociations)
-			if (modelAssociations != null) {
+			if (modelAssociations !== null) {
 				val sourceElement = modelAssociations.getPrimarySourceElement(modelElement)
-				if (sourceElement != null) {
+				if (sourceElement !== null) {
 					val parserNode = NodeModelUtils.getNode(sourceElement)
-					if (parserNode != null)
+					if (parserNode !== null)
 						currentNode.textRegion = new TextRegion(parserNode.getOffset(), parserNode.getLength())
 					switch currentNode {
 						EObjectNode case isLocalElement(parentNode, sourceElement) : currentNode.shortTextRegion = locationInFileProvider.getSignificantTextRegion(sourceElement)

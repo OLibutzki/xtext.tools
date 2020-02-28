@@ -158,7 +158,7 @@ public class NodeOutlineNode implements IOutlineNode{
 		return "[" + getClass().getSimpleName() + "] " + text.toString();
 	}
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Object getAdapter(Class adapterType) {
 		return Platform.getAdapterManager().getAdapter(this, adapterType);
 	}
