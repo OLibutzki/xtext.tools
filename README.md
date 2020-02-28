@@ -1,6 +1,6 @@
 # Xtext Tools
 
-[![Build Status](https://travis-ci.com/OLibutzki/xtext.tools.svg?branch=master)](https://travis-ci.com/OLibutzki/xtext.tools)
+![CI build](https://github.com/OLibutzki/xtext.tools/workflows/Java%20CI/badge.svg)
 
 Feel free to add issues in order to improve the tool.
 
