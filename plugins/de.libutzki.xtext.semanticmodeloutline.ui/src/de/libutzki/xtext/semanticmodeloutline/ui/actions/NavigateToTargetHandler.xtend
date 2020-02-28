@@ -16,7 +16,7 @@ class NavigateToTargetHandler extends AbstractHandler {
 	
 	override execute(ExecutionEvent event) throws ExecutionException {
 		val node = event.crossReferenceNode
-		if (node != null) {
+		if (node !== null) {
 			editorOpener.open(node.targetURI, true)
 		}
 		null

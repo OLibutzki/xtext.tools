@@ -47,7 +47,7 @@ class NodeModelOutlineTreeProvider implements IOutlineTreeProvider, INodeModelOu
 	}
 	
 	override createChildren(IOutlineNode parentNode, INode node) {
-		if (node != null && parentNode.hasChildren())
+		if (node !== null && parentNode.hasChildren())
 			createChildrenDispatcher.invoke(parentNode, node);
 	}
 
@@ -71,7 +71,7 @@ class NodeModelOutlineTreeProvider implements IOutlineTreeProvider, INodeModelOu
 	def protected void _createNode(IOutlineNode parentNode, INode node) {
 		val text = textDispatcher.invoke(node);
 		val isLeaf = isLeafDispatcher.invoke(node);
-		if (text == null && isLeaf)
+		if (text === null && isLeaf)
 			return
 		val image = imageDispatcher.invoke(node);
 		createOutlineNode(parentNode, node, image, text, isLeaf);
