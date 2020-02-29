@@ -14,15 +14,11 @@ It's possible to link the outline with the editor bidirectionally.
 The semantic model outline provides a view to investigate the semantic model (AST) of your Xtext based model file.
 It's possible to link the outline with the editor bidirectionally.
 
-## Screencast
-
-[![Xtext Tools Screencast](http://img.youtube.com/vi/ZiBMCoVYJYA/0.jpg)](http://www.youtube.com/watch?v=ZiBMCoVYJYA)
-
 ## Install Xtext Tools from Update Site 
 If you have an Eclipse running : 
 
 1. Choose **Help -> Install New Software...** from the menu bar and click **Add...** 
-2. Insert this url: **http://xtexttools.libutzki.de/**
+2. Insert this url: **https://xtexttools.libutzki.de/**
 3. Select the category *Xtext Tools* and complete the wizard by clicking the **Next** button until you can click **Finish**.
 4. After a quick download and a restart of Eclipse, the Node Model Outline is ready to use.   
 
