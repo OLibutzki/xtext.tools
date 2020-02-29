@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+		<category 
+		   id="de.libutzki.xtexttools"
+		   name="%Views.category.XtextTools">
+		</category>
+      <view
+            class="de.libutzki.xtext.nodemodeloutline.ui.NodeModelOutlineExecutableExtensionFactory:de.libutzki.xtext.nodemodeloutline.ui.view.NodeModelOutline"
+            icon="icons/nodemodeloutline.png"
+            id="de.libutzki.xtext.nodemodelview.ui.view.nodemodeloutline"
+            name="%Views.NodeModelView"
+            category="de.libutzki.xtexttools"
+            restorable="true">
+      </view>
+   </extension>
+
+</plugin>

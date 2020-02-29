@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>de.libutzki.xtext.aggregator</artifactId>
+	<artifactId>de.libutzki.xtext.semanticmodeloutline.aggregator</artifactId>
 	
 	<packaging>pom</packaging>
 	
@@ -9,14 +9,11 @@
 		<groupId>de.libutzki.xtexttools</groupId>
 		<artifactId>de.libutzki.xtext.parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>de.libutzki.xtext.parent</relativePath>
+		<relativePath>../de.libutzki.xtext.parent</relativePath>
 	</parent>
 
 	<modules>
-		<module>de.libutzki.xtext.target</module>
-		<module>de.libutzki.xtext.parent</module>
-		<module>de.libutzki.xtext.repo</module>
-		<module>nodemodeloutline</module>
-		<module>semanticmodeloutline</module>
+		<module>de.libutzki.xtext.semanticmodeloutline.feature</module>
+		<module>de.libutzki.xtext.semanticmodeloutline.ui</module>
 	</modules>
 </project>

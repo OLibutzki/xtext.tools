@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="de.libutzki.xtext.semanticmodeloutline.feature" version="0.0.0">
+      <category name="xtexttools"/>
+   </feature>
+   <feature id="de.libutzki.xtext.nodemodeloutline.feature" version="0.0.0">
+      <category name="xtexttools"/>
+   </feature>
+   <category-def name="xtexttools" label="Xtext Tools"/>
+</site>
