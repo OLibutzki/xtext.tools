@@ -31,4 +31,4 @@ jobs:
         SSH: true
         BRANCH: gh-pages
         FOLDER: de.libutzki.xtext.repo/target/repository
-        TARGET_FOLDER: latest
+        TARGET_FOLDER: /
