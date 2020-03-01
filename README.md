@@ -62,7 +62,7 @@ In contrast to generic EMF model viewers the Semantic Outline View is capable of
 These views aim at language designer and are usually useless for the language's end users.
 
 ## License
-Xtext Tools is published under the [Eclipse Public License (EPL)](http://www.eclipse.org/legal/epl-v10.html).
+Xtext Tools is published under the [Eclipse Public License (EPL) v2.0](http://www.eclipse.org/legal/epl-v20.html).
 
 The software includes items that have been sourced from third parties as set out below:
 
