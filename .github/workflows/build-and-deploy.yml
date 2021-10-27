@@ -1,6 +1,6 @@
-name: Java CI
+name: Build and Deploy
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   build:
