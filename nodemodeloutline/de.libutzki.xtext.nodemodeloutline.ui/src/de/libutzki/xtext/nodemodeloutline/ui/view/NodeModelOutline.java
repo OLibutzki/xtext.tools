@@ -20,7 +20,7 @@ public class NodeModelOutline extends PageBookView {
 
 	@Inject
 	private Provider<IContentOutlinePage> outlinePageProvider;
-
+	
 	@Override
 	protected IPage createDefaultPage(PageBook book) {
         MessagePage page = new MessagePage();
@@ -34,20 +34,23 @@ public class NodeModelOutline extends PageBookView {
 	protected PageRec doCreatePage(IWorkbenchPart part) {
 		IContentOutlinePage nodeModelOutlinePage = createOutlinePage(part);
 		if (nodeModelOutlinePage instanceof IPageBookViewPage) {
-			initPage((IPageBookViewPage)nodeModelOutlinePage);
+			initPage((IPageBookViewPage)nodeModelOutlinePage);		
 		}
 		nodeModelOutlinePage.createControl(getPageBook());
 		return new PageRec(part, nodeModelOutlinePage);
 
 	}
-
+	
 	private IContentOutlinePage createOutlinePage(IWorkbenchPart part)  {
 		IContentOutlinePage page = null;
 		if (outlinePageProvider != null) {
 			// can be null, optional injection
 			page = outlinePageProvider.get();
-			final XtextEditor xtextEditor = part.getAdapter(XtextEditor.class);
-
+			XtextEditor xtextEditor = null;
+			if (part instanceof XtextEditor) {
+				xtextEditor = (XtextEditor)part;
+			}
+			
 			if (xtextEditor != null && page != null) {
 				if (page instanceof ISourceViewerAware) {
 					((ISourceViewerAware) page).setSourceViewer(xtextEditor.getInternalSourceViewer());
@@ -78,8 +81,7 @@ public class NodeModelOutline extends PageBookView {
 
 	@Override
 	protected boolean isImportant(IWorkbenchPart part) {
-        XtextEditor editor = part.getAdapter(XtextEditor.class);
-        return editor != null;
+        return (part instanceof XtextEditor);
 	}
 
 }
