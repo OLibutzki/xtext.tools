@@ -1,7 +1,5 @@
 # Xtext Tools
 
-![CI build](https://github.com/OLibutzki/xtext.tools/workflows/Java%20CI/badge.svg)
-
 Feel free to add issues in order to improve the tool.
 
 ## Node Model Outline
