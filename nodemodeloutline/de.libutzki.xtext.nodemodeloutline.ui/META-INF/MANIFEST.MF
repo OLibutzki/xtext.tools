@@ -9,9 +9,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.ui.views,
  org.eclipse.xtext.ui,
- org.eclipse.xtend.lib,
- com.google.guava,
- org.eclipse.xtext.xbase.lib
+ com.google.guava
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.log4j;version="1.2.15"
 Bundle-Vendor: %providerName
