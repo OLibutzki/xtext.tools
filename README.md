@@ -1,67 +1,141 @@
 # Xtext Tools
 
-Feel free to add issues in order to improve the tool.
+Xtext Tools provides Eclipse views for inspecting the internal structures behind Xtext-based editors. It is intended for language engineers who need to understand how a document is represented as a semantic model and as a node model during parsing.
 
-## Node Model Outline
+Issues and improvement ideas are welcome.
 
-The Node Model Outline provides a view to investigate the node model of your Xtext based model file.
-It's possible to link the outline with the editor bidirectionally.
+## Features
 
-## Semantic Model Outline
+### Node Model Outline
 
-The semantic model outline provides a view to investigate the semantic model (AST) of your Xtext based model file.
-It's possible to link the outline with the editor bidirectionally.
+The Node Model Outline provides a view for inspecting the Xtext node model of the currently opened file.
 
-## Install Xtext Tools from Update Site 
-If you have an Eclipse running : 
+It is useful when you need to:
 
-1. Choose **Help -> Install New Software...** from the menu bar and click **Add...** 
-2. Insert this url: **https://xtexttools.libutzki.de/**
-3. Select the category *Xtext Tools* and complete the wizard by clicking the **Next** button until you can click **Finish**.
-4. After a quick download and a restart of Eclipse, the Node Model Outline is ready to use.   
+- inspect the parse tree produced by Xtext
+- understand token boundaries and hidden nodes
+- correlate parsed text with the underlying grammar structure
+- link the outline selection with the editor bidirectionally
 
-## Integrating the Node Model Outline
-If you have an Eclipse running : 
+### Semantic Model Outline
 
-1. Choose **Window -> Show View -> Other...** from the menu bar
-2. Select *Xtext Tools* -> *Node Model Outline*
-3. The outline is added to your workbench
-4. If you open an Xtext based file, the Node Model Outline displays the underlying Node Model
+The Semantic Model Outline provides a view for inspecting the semantic model (AST / EMF model) of the currently opened file.
 
-## Integrating the Semantic Model Outline
-If you have an Eclipse running : 
+It is useful when you need to:
 
-1. Choose **Window -> Show View -> Other...** from the menu bar
-2. Select *Xtext Tools* -> *Semantic Model Outline*
-3. The outline is added to your workbench
-4. If you open an Xtext based file, the Semantic Model Outline displays the underlying Semantic Model (AST)
+- inspect the semantic structure created by parsing
+- understand containments, attributes, and references
+- navigate cross-references to their targets
+- link the outline selection with the editor bidirectionally
+
+## Installation
+
+Install Xtext Tools into Eclipse from the update site:
+
+1. In Eclipse, choose **Help -> Install New Software...**
+2. Click **Add...**
+3. Enter this update site URL: `https://xtexttools.libutzki.de/`
+4. Select the category **Xtext Tools**
+5. Complete the wizard and restart Eclipse when prompted
+
+The update site contains both features:
+
+- `Xtext Node Model Outline`
+- `Xtext Semantic Model Outline`
+
+## Using the Views
+
+### Open the Node Model Outline
+
+1. Choose **Window -> Show View -> Other...**
+2. Select **Xtext Tools -> Node Model Outline**
+3. Open an Xtext-based file in an editor
+4. The view displays the underlying node model for that file
+
+### Open the Semantic Model Outline
+
+1. Choose **Window -> Show View -> Other...**
+2. Select **Xtext Tools -> Semantic Model Outline**
+3. Open an Xtext-based file in an editor
+4. The view displays the underlying semantic model (AST / EMF model) for that file
 
 ## Motivation
 
-As I work as an Xtext consultant there are a lot of situations I am confronted with again and again.
-The first one I would like to look into is "how does the underlying model look like?"
+When designing Xtext languages, a recurring question is: how does the underlying model actually look?
 
-Text files parsed by Xtext are represented as object graphs in memory. These object graphs are called Abstract Syntax Tree (AST), semantic model or simply model interchangeably. Xtext models are implemented using the Eclipse Modeling Framework (EMF).
+Files parsed by Xtext are represented as object graphs in memory. These object graphs are referred to as the abstract syntax tree (AST), the semantic model, or simply the model. Xtext models are implemented using the Eclipse Modeling Framework (EMF).
 
-As it's an EMF (Ecore) model you can investigate your model just by using any Ecore editor/viewer. Especially for languages which provide nested expressions it helps you to double-check, if the semantic model is built the way you want it to be.
+Because the semantic model is an EMF model, it can already be inspected with generic EMF tools. That is often enough, especially when validating how nested expressions or other grammar constructs are mapped into Ecore objects.
 
-If you would like to get to know why this works I recommend to read and understand this [document](http://www.eclipse.org/Xtext/documentation.html#emf_integration). 
+If you want to understand why that works, the Xtext documentation on EMF integration is a good starting point:
 
-In many situations the information from the AST is sufficient, but in some situations you need additional syntactical information. In Xtext not only an AST is constructed while parsing but also a so called parse tree (also called node model), which contains all the textual information chunked in so called tokens.
+- https://www.eclipse.org/Xtext/documentation.html#emf_integration
 
-Investigating the parse tree is not as easy as visualizing the semantic model. Often you are find myself debugging in order to get a clue how the parse tree of my model is built.
+In some cases, however, the semantic model is not enough. Xtext also builds a parse tree, usually called the node model, which retains the textual structure of the input including token-level information.
 
-As the grammar is an Xtext language itself it is represented as an EMF model, too. It's possible to navigate from a node of the parse tree to the corresponding grammar element. As this is just another indirection from the parse tree you can imagine that the debugger is my friend in these cases, too.
+Investigating the parse tree is usually less convenient than inspecting the semantic model. In practice, many language engineers end up stepping through the debugger to understand how the parser has built the node model and how individual nodes relate back to grammar elements.
 
-Xtext Tools tries to stop exploring your models by using the debugger. It provides different views in order to visualize the different underlying models.
+Xtext Tools is meant to reduce that debugging overhead by providing dedicated Eclipse views for the different underlying models.
 
-In contrast to generic EMF model viewers the Semantic Outline View is capable of linking between the selected the language element and the model element bidirectionally.
+Compared to generic EMF model viewers, the Semantic Model Outline is tailored to Xtext workflows and supports bidirectional linking between editor selection and model elements.
 
-These views aim at language designer and are usually useless for the language's end users.
+These views target language designers and are usually not useful for end users of a language.
+
+## Compatibility
+
+The current build is based on:
+
+- Tycho `5.0.2`
+- Eclipse release repository `2018-12`
+- Xtext update site `2.8.4`
+
+This means two different compatibility aspects matter:
+
+- Build runtime: building this repository requires `JDK 21` because Tycho 5 runs on Java 21.
+- Produced artifacts: the project is currently compiled with Java 8 source/target settings.
+
+If you plan to use the plugins with newer Eclipse or Xtext versions, treat that as unverified unless you have tested it explicitly.
+
+## Build From Source
+
+Prerequisites:
+
+- JDK `21`
+- Maven `3.9.9` or newer
+
+Build the complete reactor from the repository root:
+
+```bash
+mvn verify
+```
+
+The repository uses Tycho and contains these main modules:
+
+- `de.libutzki.xtext.target`: target platform definition
+- `de.libutzki.xtext.repo`: p2 update site/category definition
+- `nodemodeloutline`: Node Model Outline feature and plugin
+- `semanticmodeloutline`: Semantic Model Outline feature and plugin
+
+After a successful build, the generated p2 repository is produced by the `de.libutzki.xtext.repo` module.
+
+## CI and Deployment
+
+GitHub Actions is configured for both validation builds and deployment.
+
+- Pushes and pull requests trigger a build workflow that runs `mvn verify`.
+- Pushes to the `main` branch trigger the deployment workflow.
+- That deployment publishes the generated p2 repository from `de.libutzki.xtext.repo/target/repository` to the `gh-pages` branch.
+
+As a result, each successful build on `main` updates the published p2 update site.
 
 ## License
-Xtext Tools is published under the [Eclipse Public License (EPL) v2.0](http://www.eclipse.org/legal/epl-v20.html).
+
+Xtext Tools is published under the [Eclipse Public License (EPL) v2.0](https://www.eclipse.org/legal/epl-v20.html).
 
 The software includes items that have been sourced from third parties as set out below:
 
-[Eclipse MoDisco](http://www.eclipse.org/MoDisco/)
+- [Eclipse MoDisco](https://www.eclipse.org/MoDisco/)
+
+## Notes
+
+The feature metadata in this repository still contains older EPL v1.0 references. The README reflects the intended project license, but the feature manifests should be aligned as a follow-up to avoid ambiguity.
