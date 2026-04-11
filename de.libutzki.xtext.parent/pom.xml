@@ -7,8 +7,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<tycho-version>1.6.0</tycho-version>
-		<xtend-version>2.20.0</xtend-version>
+		<tycho-version>5.0.2</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -52,25 +51,6 @@
 						</environment>
 					</environments>
 				</configuration>
-			</plugin>
-		   <plugin>
-			  <groupId>org.eclipse.xtend</groupId>
-			  <artifactId>xtend-maven-plugin</artifactId>
-			  <version>${xtend-version}</version>
-			  <executions>
-				<execution>
-				  <goals>
-					<goal>compile</goal>
-					<goal>xtend-install-debug-info</goal>
-					<goal>testCompile</goal>
-					<goal>xtend-test-install-debug-info</goal>
-				  </goals>
-				</execution>
-			  </executions>
-			  <configuration>
-				<outputDirectory>target/generated-sources/main/xtend</outputDirectory>
-				<testOutputDirectory>target/generated-sources/test/xtend</testOutputDirectory>
-			  </configuration>
 			</plugin>
 		</plugins>
 	</build>
